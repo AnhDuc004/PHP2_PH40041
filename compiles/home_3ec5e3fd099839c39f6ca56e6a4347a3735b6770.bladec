@@ -1,0 +1,54 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('title'); ?>
+ Home
+<?php $this->stopSection(); ?>
+<?php $this->startSection('content'); ?>
+<main id="main">
+
+
+ <!-- ======= Post Grid Section ======= -->
+ <section id="posts" class="posts">
+ <div class="container" data-aos="fade-up">
+ <div class="row g-5">
+ <div class="col-lg-4">
+ <?php echo $this->runChild('components.post-entry-1', ['post' => $postFirstLatest]); ?>
+
+ </div>
+
+ <div class="col-lg-8">
+ <div class="row g-5">
+
+ <?php $__currentLoopData = $postTop6Chunk; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $item): $loop = $this->incrementLoopIndices();  ?>
+ <div class="col-lg-6 border-start custom-border">
+ <?php $__currentLoopData = $item; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $post): $loop = $this->incrementLoopIndices();  ?>
+ <?php echo $this->runChild('components.post-entry-1',
+ [
+ 'post' => $post,
+ 'hiddenAuthor' => false,
+ 'hiddenExcerpt' => false,
+ ]); ?>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </div>  
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ <?php /* <?php for($i = 0; $i < 2; $i++): ?>
+ <div class="col-lg-6 border-start custom-border">
+ <?php $__currentLoopData = $postTop6; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $key => $post): $loop = $this->incrementLoopIndices();  ?>
+ <?php echo $this->runChild('components.post-entry-1', ['post' => $post]); ?>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </div>  
+ <?php endfor; ?> */ ?>
+ 
+ </div>
+ </div>
+
+ </div> <!-- End .row -->
+ </div>
+ </section> <!-- End Post Grid Section -->
+
+
+ </main>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.master'); } ?>
